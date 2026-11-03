@@ -8,8 +8,8 @@ const MainNews = ({ news }: { news: MainNewsType[] }) => {
   //   const remainingNews = news.slice(1);
 
   return (
-    <div className="flex gap-3">
-      <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="grid grid-cols-2 gap-10">
+      <div className="col-span-1 card w-96 shadow-sm bg-amber-50 border border-gray-300">
         <figure>
           <Image
             height={200}
@@ -26,24 +26,24 @@ const MainNews = ({ news }: { news: MainNewsType[] }) => {
           <p>{firstNews.description}</p>
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="col-span-1 flex flex-col gap-3">
         {remainingNews.slice(0, 4).map((item) => (
           <div
             key={item.id}
             className="card bg-base-100 border border-gray-300"
           >
             <div className="grid grid-cols-3 items-center">
-              <div className="col-span-1 flex items-center justify-center">
+              <div className="col-span-1 relative flex h-15 w-25 items-center justify-center">
                 <Image
-                  className="rounded-md"
                   src={item.imageUrl}
                   alt={item.imageAlt}
-                  width={100}
-                  height={100}
+                  fill
+                  sizes="100px"
+                  className="object-cover rounded-md"
                 />
               </div>
+
               <div className="col-span-2">
-                <p className="text-red-500">প্রধান খবর</p>
                 <span>{item.title}</span>
               </div>
             </div>
